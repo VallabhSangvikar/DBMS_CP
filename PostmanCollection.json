@@ -1,0 +1,748 @@
+{
+  "info": {
+    "name": "DBMS Project API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Register",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/register",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "auth", "register"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"testuser\",\n  \"email\": \"testuser@example.com\",\n  \"password\": \"password123\",\n  \"phone\": \"1234567890\",\n  \"userType\": \"student\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/login",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "auth", "login"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"testuser@example.com\",\n  \"password\": \"password123\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Get User Profile",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/profile",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "auth", "profile"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Colleges",
+      "item": [
+        {
+          "name": "Get All Colleges",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/colleges",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "colleges"]
+            }
+          }
+        },
+        {
+          "name": "Get College By ID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/colleges/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "colleges", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "1"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Create College",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/colleges",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "colleges"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"collegeName\": \"Test College\",\n  \"establishedYear\": 2000,\n  \"accreditation\": \"A\",\n  \"locationState\": \"Test State\",\n  \"city\": \"Test City\",\n  \"campusSize\": 100,\n  \"contactEmail\": \"contact@testcollege.com\",\n  \"contactPhone\": \"1234567890\",\n  \"websiteUrl\": \"http://testcollege.com\",\n  \"emailDomain\": \"testcollege.com\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Update College",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/colleges/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "colleges", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "1"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"collegeName\": \"Updated College Name\",\n  \"establishedYear\": 2000,\n  \"accreditation\": \"A+\",\n  \"locationState\": \"Updated State\",\n  \"city\": \"Updated City\",\n  \"campusSize\": 120,\n  \"contactEmail\": \"updated@testcollege.com\",\n  \"contactPhone\": \"9876543210\",\n  \"websiteUrl\": \"http://updatedcollege.com\",\n  \"emailDomain\": \"updatedcollege.com\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Delete College",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/colleges/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "colleges", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "1"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get College Courses",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/colleges/:id/courses",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "colleges", ":id", "courses"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "1"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get College Faculty",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/colleges/:id/faculty",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "colleges", ":id", "faculty"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "1"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get College Alumni",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/colleges/:id/alumni",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "colleges", ":id", "alumni"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "1"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Students",
+      "item": [
+        {
+          "name": "Create Student Profile",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/students/profile",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "students", "profile"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"entranceExamName\": \"Test Exam\",\n  \"entranceExamPercentile\": 90.5,\n  \"category\": \"General\",\n  \"stream\": \"Engineering\",\n  \"passingYear\": 2025,\n  \"cutoffPoints\": 85,\n  \"interestedCourses\": \"Computer Science\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Get Student Profile",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/students/profile",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "students", "profile"]
+            }
+          }
+        },
+        {
+          "name": "Update Student Profile",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/students/profile",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "students", "profile"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"entranceExamName\": \"Updated Exam\",\n  \"entranceExamPercentile\": 95.5,\n  \"category\": \"General\",\n  \"stream\": \"Engineering\",\n  \"passingYear\": 2025,\n  \"cutoffPoints\": 90,\n  \"interestedCourses\": \"Computer Science, Data Science\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Verify Student By Email",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/students/verify",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "students", "verify"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"student@testcollege.com\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Compare Colleges",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/students/compare-colleges?college1Id=1&college2Id=2",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "students", "compare-colleges"],
+              "query": [
+                {
+                  "key": "college1Id",
+                  "value": "1"
+                },
+                {
+                  "key": "college2Id",
+                  "value": "2"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Courses",
+      "item": [
+        {
+          "name": "Get All Courses",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/courses",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "courses"]
+            }
+          }
+        },
+        {
+          "name": "Get Course By ID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/courses/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "courses", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "1"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Create Course",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/courses",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "courses"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"collegeId\": 1,\n  \"courseName\": \"Computer Science\",\n  \"duration\": 4,\n  \"fee\": 50000\n}"
+            }
+          }
+        },
+        {
+          "name": "Update Course",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/courses/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "courses", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "1"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"courseName\": \"Updated Computer Science\",\n  \"duration\": 3,\n  \"fee\": 55000\n}"
+            }
+          }
+        },
+        {
+          "name": "Delete Course",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/courses/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "courses", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "1"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Course Cutoffs",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/courses/:id/cutoffs",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "courses", ":id", "cutoffs"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "1"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Create Course Cutoff",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/courses/cutoff",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "courses", "cutoff"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"courseId\": 1,\n  \"category\": \"General\",\n  \"year\": 2024,\n  \"cutoffValue\": 85.5,\n  \"round\": 1\n}"
+            }
+          }
+        },
+        {
+          "name": "Update Course Cutoff",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/courses/cutoff/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "courses", "cutoff", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "1"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"category\": \"General\",\n  \"year\": 2024,\n  \"cutoffValue\": 87.5,\n  \"round\": 1\n}"
+            }
+          }
+        },
+        {
+          "name": "Delete Course Cutoff",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/courses/cutoff/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "courses", "cutoff", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "1"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Apply for Course",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/courses/apply",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "courses", "apply"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"courseId\": 1,\n  \"entranceExamScore\": 90.5,\n  \"statement\": \"I am interested in this course because...\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Get Student Applications",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/courses/student-applications",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "courses", "student-applications"]
+            }
+          }
+        },
+        {
+          "name": "Get Course Applications",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/courses/applications/:courseId",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "courses", "applications", ":courseId"],
+              "variable": [
+                {
+                  "key": "courseId",
+                  "value": "1"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Faculty",
+      "item": [
+        {
+          "name": "Create Faculty Profile",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/faculty/profile",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "faculty", "profile"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"collegeId\": 1,\n  \"department\": \"Computer Science\",\n  \"qualification\": \"PhD\",\n  \"researchArea\": \"Artificial Intelligence\",\n  \"contactEmail\": \"faculty@testcollege.com\",\n  \"publications\": \"10\",\n  \"experience\": 5\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Alumni",
+      "item": [
+        {
+          "name": "Get All Alumni",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/alumni",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "alumni"]
+            }
+          }
+        },
+        {
+          "name": "Create Alumni",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/alumni",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "alumni"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"collegeId\": 1,\n  \"name\": \"John Doe\",\n  \"graduationYear\": 2020,\n  \"degree\": \"B.Tech\",\n  \"currentCompany\": \"TechCorp\",\n  \"designation\": \"Software Engineer\",\n  \"package\": 1200000,\n  \"achievements\": \"Top Performer\",\n  \"linkedinProfile\": \"https://linkedin.com/in/johndoe\",\n  \"contactEmail\": \"johndoe@example.com\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Delete Alumni",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/alumni/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "alumni", "1"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Infrastructure",
+      "item": [
+        {
+          "name": "Get College Infrastructure",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/colleges/1/infrastructure",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "colleges", "1", "infrastructure"]
+            }
+          }
+        },
+        {
+          "name": "Update College Infrastructure",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/colleges/infrastructure",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "colleges", "infrastructure"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"collegeId\": 1,\n  \"hostel\": true,\n  \"library\": true,\n  \"lab\": true,\n  \"sports\": true,\n  \"digitalLearningResources\": true\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Placements",
+      "item": [
+        {
+          "name": "Get College Placements",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/colleges/1/placement",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "colleges", "1", "placement"]
+            }
+          }
+        },
+        {
+          "name": "Create Placement Record",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/colleges/placement",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "colleges", "placement"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"collegeId\": 1,\n  \"year\": 2024,\n  \"companyName\": \"TechCorp\",\n  \"studentsPlaced\": 50,\n  \"averageSalary\": 800000,\n  \"highestSalary\": 2000000,\n  \"sector\": \"IT\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Delete Placement Record",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/colleges/placement/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "colleges", "placement", "1"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Scholarships",
+      "item": [
+        {
+          "name": "Get College Scholarships",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/colleges/1/scholarships",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "colleges", "1", "scholarships"]
+            }
+          }
+        },
+        {
+          "name": "Create Scholarship",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/colleges/scholarship",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "colleges", "scholarship"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"collegeId\": 1,\n  \"name\": \"Merit Scholarship\",\n  \"description\": \"Awarded to top-performing students\",\n  \"eligibilityCriteria\": \"Top 10% of the class\",\n  \"amount\": 50000,\n  \"applicationProcess\": \"Submit application online\",\n  \"deadline\": \"2025-12-31\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Delete Scholarship",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/colleges/scholarship/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "colleges", "scholarship", "1"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
